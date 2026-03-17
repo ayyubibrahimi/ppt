@@ -1,0 +1,511 @@
+// AuthPage.module.scss - Matching your design system
+
+// U
+  // Main container - split screen layout
+  .container {
+    min-height: 100vh;
+    display: flex;
+    background-color: var(--bg-primary);
+  }
+  
+  // Left side - Branding
+  .brandingSide {
+    flex: 1;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-4xl);
+    position: relative;
+    overflow: hidden;
+    
+    // Subtle background pattern
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(circle at 25% 25%, rgba(100, 116, 139, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(100, 116, 139, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+  }
+  
+  .brandingContent {
+    max-width: 500px;
+    z-index: 1;
+    position: relative;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-3xl);
+    
+    .logoIcon {
+      height: 1.5rem;
+      width: 1.5rem;
+      color: var(--accent-secondary);
+    }
+    
+    .logoText {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 0.025em;
+    }
+  }
+  
+  .brandingText {
+    margin-bottom: var(--spacing-3xl);
+  }
+  
+  .brandingTitle {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: var(--spacing-lg);
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-light) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .brandingSubtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  .features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .featureBullet {
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-secondary);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  
+  // Right side - Auth form
+  .authSide {
+    flex: 1;
+    background-color: var(--bg-secondary);
+    border-left: 1px solid var(--border-default);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-3xl);
+    min-width: 480px;
+  }
+  
+  .authContainer {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .authHeader {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: var(--spacing-3xl);
+  }
+  
+  .toggleLink {
+    color: var(--accent-secondary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+  
+  .authForm {
+    width: 100%;
+  }
+  
+  .formHeader {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+  }
+  
+  .formTitle {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.2;
+  }
+  
+  .formSubtitle {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  // Error banner
+  .errorBanner {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background-color: rgba(220, 38, 38, 0.1);
+    border: 1px solid var(--error);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .errorIcon {
+    height: 1rem;
+    width: 1rem;
+    color: var(--error);
+    flex-shrink: 0;
+  }
+  
+  .errorText {
+    color: var(--error);
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  
+  // Form styling
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .formField {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .formRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .inputIcon {
+    position: absolute;
+    left: var(--spacing-md);
+    height: 1rem;
+    width: 1rem;
+    color: var(--text-muted);
+    z-index: 1;
+  }
+  
+  .input {
+    width: 100%;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) 2.5rem;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    height: 48px;
+    
+    &::placeholder {
+      color: var(--text-muted);
+    }
+    
+    &:focus {
+      outline: none;
+      border-color: var(--accent-secondary);
+      background-color: var(--bg-surface);
+      box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.1);
+    }
+    
+    &:hover:not(:focus) {
+      border-color: var(--border-hover);
+    }
+  }
+  
+  // Password field styling
+  .passwordField {
+    position: relative;
+    width: 100%;
+  }
+  
+  .passwordInput {
+    width: 100%;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md) 2.5rem var(--spacing-md) var(--spacing-md);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    height: 48px;
+    
+    &::placeholder {
+      color: var(--text-muted);
+    }
+    
+    &:focus {
+      outline: none;
+      border-color: var(--accent-secondary);
+      background-color: var(--bg-surface);
+      box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.1);
+    }
+    
+    &:hover:not(:focus) {
+      border-color: var(--border-hover);
+    }
+  }
+  
+  .passwordToggle {
+    position: absolute;
+    right: var(--spacing-md);
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+  
+  .eyeIcon {
+    height: 1rem;
+    width: 1rem;
+  }
+  
+  // Submit button - matches your accent color with pink accent like in reference
+  .submitButton {
+    width: 100%;
+    background: linear-gradient(135deg, #882b2b 0%, #911e1e 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 0.875rem;
+    font-weight: 600;
+    height: 48px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-card);
+    
+    &:hover:not(:disabled) {
+      background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+  }
+  
+  // Divider
+  .divider {
+    text-align: center;
+    margin: var(--spacing-xl) 0;
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background-color: var(--border-default);
+    }
+  }
+  
+  .dividerText {
+    background-color: var(--bg-secondary);
+    color: var(--text-muted);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    padding: 0 var(--spacing-md);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  
+  // GitHub button
+  .githubButton {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid var(--border-default);
+    color: var(--text-secondary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 0.875rem;
+    font-weight: 500;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: var(--spacing-xl);
+    
+    &:hover:not(:disabled) {
+      background-color: rgba(100, 116, 139, 0.1);
+      border-color: var(--accent-secondary);
+      color: var(--text-primary);
+    }
+    
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+  
+  .githubIcon {
+    height: 1rem;
+    width: 1rem;
+  }
+  
+  // Legal text
+  .legalText {
+    text-align: center;
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+  
+  .legalLink {
+    color: var(--accent-secondary);
+    text-decoration: underline;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+  
+  // Responsive design
+  @media (max-width: 1024px) {
+    .container {
+      flex-direction: column;
+    }
+    
+    .brandingSide {
+      min-height: 40vh;
+      padding: var(--spacing-2xl);
+    }
+    
+    .brandingTitle {
+      font-size: 2rem;
+    }
+    
+    .authSide {
+      min-width: auto;
+      padding: var(--spacing-2xl);
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .brandingSide {
+      padding: var(--spacing-xl);
+    }
+    
+    .brandingTitle {
+      font-size: 1.75rem;
+    }
+    
+    .authSide {
+      padding: var(--spacing-xl);
+    }
+    
+    .formRow {
+      grid-template-columns: 1fr;
+    }
+    
+    .authContainer {
+      max-width: none;
+    }
+  }
+  
+  // Focus states for accessibility
+  .toggleLink:focus-visible,
+  .passwordToggle:focus-visible,
+  .submitButton:focus-visible,
+  .githubButton:focus-visible,
+  .input:focus-visible,
+  .passwordInput:focus-visible {
+    outline: 2px solid var(--accent-secondary);
+    outline-offset: 2px;
+  }
+  
+  // Loading states
+  .submitButton:disabled,
+  .githubButton:disabled {
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid transparent;
+      border-top: 2px solid currentColor;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-left: var(--spacing-sm);
+    }
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  // Animation for form transitions
+  .form {
+    animation: fadeInUp 0.5s ease;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

@@ -1,0 +1,15 @@
+*.env   
+*.json
+*.txt
+*__pycache__
+*DS_Store
+read/
+node_modules/
+*.json
+*.txt
+*.log
+*.db
+*.db-?*
+archive/
+*.csv
+*.xlsx
